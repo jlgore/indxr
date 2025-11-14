@@ -1,0 +1,48 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "indxr"
+version = "0.1.0"
+description = "A flexible tool for generating indexed study materials from markdown files"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "jlgore"},
+]
+keywords = ["index", "pdf", "study", "materials", "generator"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+
+dependencies = [
+    "reportlab>=4.0.0",
+    "click>=8.0.0",
+    "tomli>=2.0.0; python_version < '3.11'",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=22.0.0",
+    "ruff>=0.1.0",
+]
+
+[project.scripts]
+indxr = "indxr.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/jlgore/indxr"
+Issues = "https://github.com/jlgore/indxr/issues"
+
+[tool.hatchling.build.targets.wheel]
+packages = ["indxr"]

@@ -1,0 +1,23 @@
+# indxr configuration file example
+# Copy this file to indxr.toml and customize for your needs
+
+# Input and output directories
+index_dir = "Cards/Index"
+output_dir = "output"
+
+# File pattern for finding index files (glob pattern)
+file_pattern = "Book * Index.md"
+
+# Optional: Custom regex pattern for parsing entries
+# Default: 'Book\s+(\d+),\s+Page\s+(\d+(?:-\d+)?),\s+Slide:\s+"([^"]+)"\s+(#[\w\-]+(?:\s+#[\w\-]+)*)'
+# pattern = "Book\\s+(\\d+),\\s+Page\\s+(\\d+(?:-\\d+)?),\\s+Slide:\\s+\"([^\"]+)\"\\s+(#[\\w\\-]+(?:\\s+#[\\w\\-]+)*)"
+
+# Customization for book PDFs
+title_prefix = "SANS SEC504"
+
+# Customization for master index
+master_title = "SANS SEC504<br/>Master Index"
+master_subtitle = "Comprehensive Topic Index Across All Books"
+
+# Customization for compact index
+compact_title = "SANS SEC504<br/>Compact Index"
