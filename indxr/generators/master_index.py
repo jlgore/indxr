@@ -95,10 +95,20 @@ class MasterIndexGenerator:
             entries = self.tag_index[tag]
             story.extend(self._create_tag_section(tag, entries, styles))
 
-        # Build PDF
-        doc.build(story)
+        # Build PDF with page numbers
+        doc.build(story, onFirstPage=self._add_page_number, onLaterPages=self._add_page_number)
 
         return str(output_path)
+
+    def _add_page_number(self, canvas, doc):
+        """Add page number to the bottom center of each page"""
+        page_num = canvas.getPageNumber()
+        text = f"Page {page_num}"
+        canvas.saveState()
+        canvas.setFont('Helvetica', 9)
+        canvas.setFillColor(colors.HexColor('#7F8C8D'))
+        canvas.drawCentredString(letter[0] / 2, 0.5 * inch, text)
+        canvas.restoreState()
 
     def _create_title_page(self, styles) -> List:
         """Create the title page"""
