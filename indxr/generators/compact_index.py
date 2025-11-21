@@ -98,7 +98,7 @@ class CompactIndexGenerator:
             showBoundary=0
         )
 
-        template = PageTemplate(id='TwoCol', frames=[frame1, frame2])
+        template = PageTemplate(id='TwoCol', frames=[frame1, frame2], onPage=self._add_page_number)
         doc.addPageTemplates([template])
 
         story = []
@@ -114,8 +114,8 @@ class CompactIndexGenerator:
             entries = self.tag_index[tag]
             story.extend(self._create_compact_tag_entry(tag, entries, styles))
 
-        # Build PDF with page numbers
-        doc.build(story, onFirstPage=self._add_page_number, onLaterPages=self._add_page_number)
+        # Build PDF
+        doc.build(story)
 
         return str(output_path)
 
