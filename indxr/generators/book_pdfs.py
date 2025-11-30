@@ -150,8 +150,8 @@ class BookPDFGenerator:
         page_num = canvas.getPageNumber()
         text = f"Page {page_num}"
         canvas.saveState()
-        canvas.setFont('Helvetica', 9)
-        canvas.setFillColor(colors.HexColor('#7F8C8D'))
+        canvas.setFont('Helvetica', 10)
+        canvas.setFillColor(colors.black)
         canvas.drawCentredString(letter[0] / 2, 0.5 * inch, text)
         canvas.restoreState()
 

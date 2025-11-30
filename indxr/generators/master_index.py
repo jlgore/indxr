@@ -88,8 +88,8 @@ class MasterIndexGenerator:
         # Title page
         story.extend(self._create_title_page(styles))
 
-        # Generate index entries for each tag (sorted alphabetically)
-        sorted_tags = sorted(self.tag_index.keys())
+        # Generate index entries for each tag (sorted alphabetically, case-insensitive)
+        sorted_tags = sorted(self.tag_index.keys(), key=str.lower)
 
         for tag in sorted_tags:
             entries = self.tag_index[tag]
@@ -105,8 +105,8 @@ class MasterIndexGenerator:
         page_num = canvas.getPageNumber()
         text = f"Page {page_num}"
         canvas.saveState()
-        canvas.setFont('Helvetica', 9)
-        canvas.setFillColor(colors.HexColor('#7F8C8D'))
+        canvas.setFont('Helvetica', 10)
+        canvas.setFillColor(colors.black)
         canvas.drawCentredString(letter[0] / 2, 0.5 * inch, text)
         canvas.restoreState()
 
