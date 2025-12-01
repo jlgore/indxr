@@ -107,8 +107,8 @@ class CompactIndexGenerator:
         # Title page
         story.extend(self._create_title_page(styles))
 
-        # Generate compact index entries
-        sorted_tags = sorted(self.tag_index.keys())
+        # Generate compact index entries (sorted alphabetically, case-insensitive)
+        sorted_tags = sorted(self.tag_index.keys(), key=str.lower)
 
         for tag in sorted_tags:
             entries = self.tag_index[tag]
