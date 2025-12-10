@@ -120,8 +120,10 @@ class IndexParser:
 
         for entry in entries:
             for tag in entry.tags:
-                if tag not in tag_map:
-                    tag_map[tag] = []
-                tag_map[tag].append(entry)
+                # Normalize tag to lowercase to collate #TOPIC and #topic together
+                normalized_tag = tag.lower()
+                if normalized_tag not in tag_map:
+                    tag_map[normalized_tag] = []
+                tag_map[normalized_tag].append(entry)
 
         return tag_map

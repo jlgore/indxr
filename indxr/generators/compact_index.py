@@ -48,7 +48,8 @@ class CompactIndexGenerator:
         for book_num, entries in self.all_entries.items():
             for entry in entries:
                 for tag in entry.tags:
-                    tag_map[tag].append(entry)
+                    # Normalize tag to lowercase to collate #TOPIC and #topic together
+                    tag_map[tag.lower()].append(entry)
 
         # Sort entries within each tag by book number, then page number
         for tag in tag_map:
